@@ -10,18 +10,17 @@ import { useNavigate } from "react-router-dom";
 export default function OAuth() {
     const auth = getAuth(app);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const handleGoogleClick = async () => {
         const provider = new GoogleAuthProvider()
-        // enable to always sign in with an account, also, more than 1 account
         provider.setCustomParameters({ prompt: "select_account"})
         try {
             const resultsFromGoogle = await signInWithPopup(auth, provider)
-            const res = await fetch("/api/auth/google", {
+            const res = await fetch(`/api/auth/google`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    name:resultsFromGoogle.user.displayName,
+                    name: resultsFromGoogle.user.displayName,
                     email: resultsFromGoogle.user.email,
                     googlePhotoUrl: resultsFromGoogle.user.photoURL
                 }),
@@ -29,23 +28,21 @@ export default function OAuth() {
             const data = await res.json()
             if (res.ok) {
                 dispatch(signInSuccess(data));
-            }
-
-            
+                navigate('/')
+            }            
         } catch (error) {
-            console.log(error);
-            navigate("/");
+            console.log(error);            
         }
     }
     return (
         <Button
-        type="button"
-        gradientDuoTone="pinkToOrange"
-        outline
-        onClick={handleGoogleClick}
-        >
-            <AiFillGoogleCircle className="w-6 h-8 mr-2"/>
-            Continue with Google            
+            type="button"
+            gradientDuoTone="pinkToOrange"
+            outline
+            onClick={handleGoogleClick}
+            >
+                <AiFillGoogleCircle className="w-6 h-8 mr-2"/>
+                    Continue with Google            
         </Button>
-    )
+    );
 }
