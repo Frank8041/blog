@@ -16,12 +16,13 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 
 
 export default function DashProfile() {
     const dispatch = useDispatch();
-    const { currentUser, error } = useSelector((state) => state.user);
+    const { currentUser, loading , error } = useSelector((state) => state.user);
     const [ imageFile, setImageFile ] = useState(null);
     const [ imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
     const [ imageFileUploadError, setImageFileUploadError] = useState(null);
@@ -221,9 +222,28 @@ export default function DashProfile() {
                             onChange={handleChange}
                             />
 
-                        <Button gradientDuoTone="purpleToBlue" outline type="submit" >
-                            Update
+                        <Button 
+                            gradientDuoTone="purpleToBlue" 
+                            outline type="submit" 
+                            disabled={loading || imageFileUploading}
+                            >
+                                {loading ? "Loading" : "Update"}
                         </Button>
+
+                        {
+                            currentUser.isAdmin && (
+                                <Link to={"/create-post"}>
+                                    <Button
+                                        type="button"
+                                        gradientDuoTone="purpleToPink"
+                                        className="w-full"                                    
+                                        >
+                                            Create a post
+
+                                    </Button>
+                                </Link>
+                            )
+                        }
             </form>
             <div className="text-red-500 underline cursor-pointer flex justify-between mt-6">
                 <span onClick={() => setShowModal(true)}>Delete account</span>
