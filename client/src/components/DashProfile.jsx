@@ -295,8 +295,6 @@ export default function DashProfile() {
                             </div>
                         </div>
                     </Modal.Body>
-
-
             </Modal>
 
 
