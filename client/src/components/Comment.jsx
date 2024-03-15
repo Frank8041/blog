@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
