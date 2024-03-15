@@ -9,3 +9,33 @@ body{
 .ql-editor{
     font-size: 1.05rem;
 }
+
+.post-content-styled-in-indexcss p{
+    margin-bottom: 0.5 rem;
+}
+
+.post-content-styled-in-indexcss h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin: 1.5rem 0;
+}
+
+.post-content-styled-in-indexcss h2{
+    font-size: 1.3rem;
+    font-family: sans-serif;
+    margin: 1.5rem 0;
+}
+
+.post-content-styled-in-indexcss a{
+    color: rgb(73, 149, 199);
+    text-decoration: none;
+}
+
+.post-content-styled-in-indexcss a:hover {
+    text-decoration: underline;
+}
+
+.dark .post-content-styled-in-indexcss a{
+    color: red ;
+}
