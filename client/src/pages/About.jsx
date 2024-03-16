@@ -4,11 +4,11 @@ export default function About() {
         <div className='max-w-2xl mx-auto p-3 text-center'>
             <div>
             <h1 className='text-3xl font font-semibold text-center my-7'>
-                About Lingua Blog
+                About Chess Blog
             </h1>
             <div className='text-md text-gray-500 flex flex-col gap-6'>
                 <p>
-                Welcome to Lingua Blog! This blog was created by Nzemia, alias, Frank
+                Welcome to Chess Blog! This blog was created by Nzemia, alias, Frank
                 as a personal project to share his thoughts and ideas with the
                 world. Frank is a passionate developer who loves to write about
                 technology, coding, and everything in between.
