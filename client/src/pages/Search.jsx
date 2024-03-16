@@ -128,14 +128,15 @@ export default function Search() {
                 <div className="flex items-center gap-2">
                     <label className="font-semibold">Category:</label>
                     <Select
-                    onChange={handleChange}
-                    value={sidebarData.category}
-                    id="category"
+                        onChange={handleChange}
+                        value={sidebarData.category}
+                        id="category"
                     >
-                    <option value="uncategorized">Uncategorized</option>
-                    <option value="reactjs">React.js</option>
-                    <option value="nextjs">Next.js</option>
-                    <option value="javascript">JavaScript</option>
+                        <option value="uncategorized">Uncategorized</option>                   
+                        <option value="introduction">Introduction</option>
+                        <option value="openings">Openings</option>
+                        <option value="middlegames">MiddleGames</option>
+                        <option value="endgames">EndGames</option>
                     </Select>
                 </div>
                 <Button type="submit" outline gradientDuoTone="purpleToPink">

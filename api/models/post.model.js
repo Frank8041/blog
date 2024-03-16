@@ -17,7 +17,7 @@ const postSchema = new mongoose.Schema(
         },
         image: {
             type: String,
-            default: "https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/09/how-to-write-a-blog-post.png",
+            default: "https://www.chess-universe.shop/cdn/shop/articles/move-in-silence-only-speak-when-its-time-to-say-checkmate._39b46e41-12cc-45d5-a4e6-68459d5eb784_1024x1024.jpg?v=1657019591",
         },
         category: {
             type: String,
