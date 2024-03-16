@@ -6,6 +6,9 @@ import authRoutes from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import commentRoutes from "./routes/comment.route.js";
 import postRoutes from "./routes/post.route.js";
+// path,,, for deploying
+import path from "path";
+
 
 dotenv.config();
 
@@ -17,6 +20,8 @@ mongoose.
     .catch((err) => {
         console.log(err);
 });
+
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -37,6 +42,15 @@ app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 
 app.use('/api/comment', commentRoutes);
+
+// here, make sure you put it after routes, alsoo we used dist because we used vite
+app.use(express.static(path.join(__dirname, "/client/dist")));
+app.get("*", (req, res, next) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
+
+
+
 
 //middleware
 app.use((err, req, res, next) => {

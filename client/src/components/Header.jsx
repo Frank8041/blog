@@ -5,7 +5,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { signOutSuccess } from "../redux/user/userSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Header() {
     const { currentUser } = useSelector(state => state.user);
@@ -14,15 +14,8 @@ export default function Header() {
     const location = useLocation();
     const path = useLocation().pathname;
     const { theme } = useSelector((state) => state.theme);
-    const [searchTerm, setSearchTerm ] = useState("");
-
-    useEffect(() => {
-        const urlParams = new URLSearchParams(location.search);
-        const searchTermFromUrl = urlParams.get("searchTerm");
-        if (searchTermFromUrl) {
-        setSearchTerm(searchTermFromUrl);
-        }
-    }, [location.search]);
+    const [searchTerm, setSearchTerm ] = useState("");    
+    
 
     const handleSignout = async () => {
         try {
