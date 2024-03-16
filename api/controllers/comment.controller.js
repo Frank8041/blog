@@ -23,6 +23,7 @@ export const createComment = async (req, res, next) => {
     }
 };
 
+
 export const getPostComments = async (req, res, next) => {
     try {
         const comments = await Comment.find({ postId: req.params.postId }).sort({
@@ -33,6 +34,7 @@ export const getPostComments = async (req, res, next) => {
         next(error);
     }
 };
+
 
 export const likeComment = async (req, res, next) => {
     try {
@@ -78,9 +80,10 @@ export const editComment = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-    };
+};
 
-    export const deleteComment = async (req, res, next) => {
+
+export const deleteComment = async (req, res, next) => {
     try {
         const comment = await Comment.findById(req.params.commentId);
         if (!comment) {
@@ -106,9 +109,10 @@ export const getcomments = async (req, res, next) => {
         const limit = parseInt(req.query.limit) || 9;
         const sortDirection = req.query.sort === 'desc' ? -1 : 1;
         const comments = await Comment.find()
-        .sort({ createdAt: sortDirection })
-        .skip(startIndex)
-        .limit(limit);
+            .sort({ createdAt: sortDirection })
+            .skip(startIndex)
+            .limit(limit);
+
         const totalComments = await Comment.countDocuments();
         const now = new Date();
         const oneMonthAgo = new Date(
@@ -116,6 +120,7 @@ export const getcomments = async (req, res, next) => {
         now.getMonth() - 1,
         now.getDate()
         );
+        
         const lastMonthComments = await Comment.countDocuments({
         createdAt: { $gte: oneMonthAgo },
         });
